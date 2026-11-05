@@ -23,3 +23,13 @@ déployée par `d4g-gitops` (`base/moodle`) sur le cluster `tools`.
 
 On n'installe ni ne met à jour rien depuis l'admin de Moodle : le code n'est
 pas inscriptible, et ce qui y serait écrit disparaîtrait au pod suivant.
+
+## La connexion : Keycloak
+
+Le service OAuth2 natif de Moodle (`auth_oauth2`, dans le cœur), émetteur
+« Data For Good » sur `https://auth.dataforgood.fr/realms/dataforgood`,
+client `moodle-prod` (d4g-keycloak, retour sur `/admin/oauth2callback.php`).
+Ce réglage vit dans la base, pas dans l'image :
+[`bin/oauth2-keycloak.php`](bin/oauth2-keycloak.php) le refait, et son en-tête
+dit comment l'appeler et ce qu'il règle. Les comptes existants sont rattachés
+par e-mail au premier passage (d4g-gitops DG-88).
