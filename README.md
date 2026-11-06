@@ -33,3 +33,9 @@ Ce réglage vit dans la base, pas dans l'image :
 [`bin/oauth2-keycloak.php`](bin/oauth2-keycloak.php) le refait, et son en-tête
 dit comment l'appeler et ce qu'il règle. Les comptes existants sont rattachés
 par e-mail au premier passage (d4g-gitops DG-88).
+
+L'ancien émetteur « Data For Good Authentik » (id 1) est **désactivé** depuis
+le 06/11/2026, pas supprimé : ses liaisons de comptes restent en base, et
+`\core\oauth2\api::enable_issuer(1)` le rallumerait — inutile après la chute
+de la redirection Authentik (`infra/ingress/authentik-redirect/` de
+d4g-gitops), qui le laisse sans serveur derrière.
